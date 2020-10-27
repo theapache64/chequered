@@ -17,6 +17,7 @@ import kotlin.js.Date
 val uiInputNewClg by lazy { document.getElementById("input_new_challenge")!! as HTMLInputElement }
 val uiSelectChallenges by lazy { document.getElementById("select_challenges")!! as HTMLSelectElement }
 val uiTextAreaTweet by lazy { document.getElementById("textarea_tweet")!! as HTMLTextAreaElement }
+val uiButtonTweet by lazy { document.getElementById("button_tweet")!! as HTMLTextAreaElement }
 
 fun main() {
 
@@ -43,10 +44,31 @@ fun main() {
 
     // Listener for F2
     window.onkeyup = {
+
         if (it.keyCode == KeyCode.KEY_CODE_F2) {
             promptEditChallenge()
         }
+
+        // Delete active challenge
+        if (document.activeElement?.id != uiTextAreaTweet.id) {
+            if (it.keyCode == KeyCode.KEY_CODE_DELETE) {
+                val selectedChannel = ChallengeRepo.getLastSelectedChallenge()
+                if (selectedChannel != null) {
+                    confirmDelete(selectedChannel)
+                }
+            }
+        }
     }
+
+    // Listening for button click
+    uiButtonTweet.onclick = {
+        window.open(
+            "https://twitter.com/intent/tweet?text=${uiTextAreaTweet.value}",
+            "_blank"
+        )
+
+    }
+
 }
 
 private fun promptEditChallenge() {
@@ -65,16 +87,7 @@ private fun promptEditChallenge() {
                 if (numInput in 0..100) {
                     if (numInput == 0) {
                         // Delete challenge
-                        val isYes = window.confirm("Are you sure you want to delete ${currentChallenge.title}?")
-                        if (isYes) {
-                            // Delete confirmed
-                            val isDeleted = ChallengeRepo.deleteChallenge(currentChallenge)
-                            if (isDeleted) {
-                                refreshUiSelectChallenges()
-                            } else {
-                                window.alert("Uh ho!! Sorry. You should have at least one challenge in your life.")
-                            }
-                        }
+                        confirmDelete(currentChallenge)
                     } else {
                         // Number is between 1 and 100. so edit the list
                         val today = Date().getTime()
@@ -89,6 +102,19 @@ private fun promptEditChallenge() {
             } catch (e: NumberFormatException) {
                 window.alert("$input is not a number")
             }
+        }
+    }
+}
+
+private fun confirmDelete(currentChallenge: Challenge) {
+    val isYes = window.confirm("Are you sure you want to delete ${currentChallenge.title}?")
+    if (isYes) {
+        // Delete confirmed
+        val isDeleted = ChallengeRepo.deleteChallenge(currentChallenge)
+        if (isDeleted) {
+            refreshUiSelectChallenges()
+        } else {
+            window.alert("Uh ho!! Sorry. You should have at least one challenge in your life.")
         }
     }
 }
@@ -159,6 +185,7 @@ private fun addNewChallenge(inputNewClg: HTMLInputElement): Challenge? {
 
         val newClg = Challenge(newClgTitle, Date().getTime())
         ChallengeRepo.addChallenge(newClg)
+        uiInputNewClg.value = ""
         newClg
     } else {
         window.alert("Challenge name can't be empty")
