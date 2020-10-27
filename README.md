@@ -1,5 +1,7 @@
 # chequered 🏁
 
+![](https://i.imgur.com/NGnts6z.png)
+
 A simple tool to generate tweet for the #100DaysOfX challenge.
 
 ## Status 👷
