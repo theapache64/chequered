@@ -6,10 +6,8 @@ import com.theapache64.chequered.utils.KeyCode
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.dom.clear
-import org.w3c.dom.HTMLInputElement
-import org.w3c.dom.HTMLSelectElement
-import org.w3c.dom.HTMLTextAreaElement
-import org.w3c.dom.Option
+import org.w3c.dom.*
+import org.w3c.dom.url.URL
 import kotlin.js.Date
 
 
@@ -17,7 +15,7 @@ import kotlin.js.Date
 val uiInputNewClg by lazy { document.getElementById("input_new_challenge")!! as HTMLInputElement }
 val uiSelectChallenges by lazy { document.getElementById("select_challenges")!! as HTMLSelectElement }
 val uiTextAreaTweet by lazy { document.getElementById("textarea_tweet")!! as HTMLTextAreaElement }
-val uiButtonTweet by lazy { document.getElementById("button_tweet")!! as HTMLTextAreaElement }
+val uiButtonTweet by lazy { document.getElementById("button_tweet")!! as HTMLButtonElement }
 
 fun main() {
 
@@ -62,11 +60,12 @@ fun main() {
 
     // Listening for button click
     uiButtonTweet.onclick = {
+        window.alert("Clicked!")
+
         window.open(
-            "https://twitter.com/intent/tweet?text=${uiTextAreaTweet.value}",
+            URL("https://twitter.com/intent/tweet?text=${uiTextAreaTweet.value}").href,
             "_blank"
         )
-
     }
 
 }
