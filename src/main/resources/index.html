@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chequered - #100DaysOfX</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body class="bg-dark text-white">
+<div class="container-fluid">
+    <!--Title-->
+    <div class="row pt-3">
+        <div class="col-md-12 text-center">
+            <h1>🏁 Chequered</h1>
+        </div>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-md-3">
+            <!--Input box-->
+            <input id="input_new_challenge" type="text" class="form-control" placeholder="Add new (press ENTER to add)">
+
+            <br>
+
+            <!--Challenges-->
+            <select id="select_challenges" class="form-control">
+                <option>100DaysOfCode</option>
+            </select>
+
+
+        </div>
+
+        <!--Final Tweet-->
+        <div class="col-md-9">
+            <textarea rows="4" id="textarea_tweet" class="form-control"></textarea>
+            <br/>
+
+            <!--Tweet Button-->
+            <button type="button" class="btn btn-outline-primary"><i class="fa fa-twitter"></i> Tweet</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="chequered.js"></script>
+</body>
+</html>
