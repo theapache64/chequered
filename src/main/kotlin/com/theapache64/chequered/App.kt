@@ -78,10 +78,8 @@ private fun promptEditChallenge() {
                     } else {
                         // Number is between 1 and 100. so edit the list
                         val today = Date().getTime()
-                        val dateOffset = (24 * 60 * 60 * 1000) * numInput; //5 days
-                        console.log("Today is $today")
-                        console.log("Offset is $dateOffset")
-                        currentChallenge.startedAt = today - dateOffset
+                        val dateOffset: Double = (24 * 60 * 60 * 1000) * (numInput.toDouble() - 1);
+                        currentChallenge.startedAt = (today - dateOffset)
                         ChallengeRepo.updateChallenge(currentChallenge)
                         refreshUiSelectChallenges()
                     }
