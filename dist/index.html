@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chequered - #100DaysOfX</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        body {
+            background-color: #15202B;
+        }
+
+        label {
+            font-weight: 800;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+            background-color: #2B91DA !important;
+        }
+    </style>
+</head>
+<body class="text-white">
+<div class="container-fluid">
+    <!--Title-->
+    <div class="row pt-3">
+        <div class="col-md-12 text-center">
+            <h1>🏁 Chequered</h1>
+            <small>Track Your Challenges!</small>
+        </div>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-md-4">
+            <!--Input box-->
+            <div class="form-group">
+                <label for="input_new_challenge">Add New Challenge: </label>
+                <input id="input_new_challenge" type="text" class="form-control"
+                       placeholder="Add new habit (Eg: Writing). Press ENTER to add">
+            </div>
+
+            <!--Challenges-->
+            <div class="form-group">
+                <label for="select_challenges">Select Challenge: </label>
+                <select id="select_challenges" class="form-control">
+                </select>
+                <small>Press F2 to edit the selected channel</small>
+            </div>
+
+
+        </div>
+
+        <!--Final Tweet-->
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="textarea_tweet">Tweet: </label>
+                <textarea maxlength="280" rows="5" id="textarea_tweet" class="form-control"></textarea>
+            </div>
+            <br/>
+
+            <!--Tweet Button-->
+            <button id="button_tweet" type="button" class="btn btn-primary"><i class="fa fa-send"></i> Tweet</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="chequered.js"></script>
+</body>
+</html>
