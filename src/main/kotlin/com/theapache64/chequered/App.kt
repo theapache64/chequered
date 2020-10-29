@@ -60,15 +60,18 @@ fun main() {
 
     // Listening for button click
     uiButtonTweet.onclick = {
-        window.alert("Clicked!")
+
+        val text = encodeURIComponent(uiTextAreaTweet.value)
 
         window.open(
-            URL("https://twitter.com/intent/tweet?text=${uiTextAreaTweet.value}").href,
+            "https://twitter.com/intent/tweet?text=$text",
             "_blank"
         )
     }
 
 }
+
+external fun encodeURIComponent(encodedURI: String): String
 
 private fun promptEditChallenge() {
     val currentChallenge = ChallengeRepo.getLastSelectedChallenge()
@@ -130,7 +133,7 @@ fun onChallengeChanged(selectedClg: Challenge) {
         
         TYPE_YOUR_PROGRESS_HERE
         
-        #100DaysOfX 
+        #100DaysOfX
     """.trimIndent()
 
 }
