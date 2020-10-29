@@ -4,15 +4,15 @@
 
 A simple tool to generate tweet for the #100DaysOfX challenge.
 
-## Status 👷
-
-- Under active development
-
-## Feature
+## Feature 🚀
 
 - Tweet Generator
 - Day Tracker
 - Supports Multiple Challenges
+
+## How to use it ? 🤷
+
+Go visit https://theapache64.github.io/chequered/ and you'll figure it out 😉
 
 ## Author ✍️️
 
