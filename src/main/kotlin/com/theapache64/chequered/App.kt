@@ -3,11 +3,11 @@ package com.theapache64.chequered
 import com.theapache64.chequered.data.repo.ChallengeRepo
 import com.theapache64.chequered.model.Challenge
 import com.theapache64.chequered.utils.KeyCode
+import com.theapache64.chequered.utils.encodeURIComponent
 import kotlinx.browser.document
 import kotlinx.browser.window
 import kotlinx.dom.clear
 import org.w3c.dom.*
-import org.w3c.dom.url.URL
 import kotlin.js.Date
 
 
@@ -71,8 +71,10 @@ fun main() {
 
 }
 
-external fun encodeURIComponent(encodedURI: String): String
 
+/**
+ * To edit the currently selected challenge
+ */
 private fun promptEditChallenge() {
     val currentChallenge = ChallengeRepo.getLastSelectedChallenge()
 
@@ -108,6 +110,9 @@ private fun promptEditChallenge() {
     }
 }
 
+/**
+ * To delete the given challenge
+ */
 private fun confirmDelete(currentChallenge: Challenge) {
     val isYes = window.confirm("Are you sure you want to delete ${currentChallenge.title}?")
     if (isYes) {
@@ -121,6 +126,9 @@ private fun confirmDelete(currentChallenge: Challenge) {
     }
 }
 
+/**
+ * Invoked when challenge selected
+ */
 fun onChallengeChanged(selectedClg: Challenge) {
     console.log("Selected: -> $selectedClg")
 
@@ -138,7 +146,10 @@ fun onChallengeChanged(selectedClg: Challenge) {
 
 }
 
-private fun preselect(uiSelectChallenges: HTMLSelectElement, addedClg: Challenge) {
+/**
+ * To preselect given challenge
+ */
+private fun scrollTo(uiSelectChallenges: HTMLSelectElement, addedClg: Challenge) {
     uiSelectChallenges.selectedIndex =
         ChallengeRepo.getChallenges().indexOfFirst { it.title == addedClg.title }.let { index ->
             if (index == -1) {
@@ -151,6 +162,9 @@ private fun preselect(uiSelectChallenges: HTMLSelectElement, addedClg: Challenge
     onChallengeChanged(addedClg)
 }
 
+/**
+ * To refresh challenges
+ */
 private fun refreshUiSelectChallenges(preSelectedClg: Challenge? = null) {
     uiSelectChallenges.clear()
     val challenges = ChallengeRepo.getChallenges()
@@ -162,9 +176,12 @@ private fun refreshUiSelectChallenges(preSelectedClg: Challenge? = null) {
         uiSelectChallenges.options.add(clgOpt)
     }
 
-    preselect(uiSelectChallenges, preSelectedClg ?: challenges.first())
+    scrollTo(uiSelectChallenges, preSelectedClg ?: challenges.first())
 }
 
+/**
+ * To add new challenge
+ */
 private fun addNewChallenge(inputNewClg: HTMLInputElement): Challenge? {
 
     var newClgTitle = inputNewClg.value
