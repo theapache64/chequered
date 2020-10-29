@@ -4,7 +4,7 @@
 
 A simple tool to generate tweet for the #100DaysOfX challenge.
 
-## Feature 🚀
+## Features 🚀
 
 - Tweet Generator
 - Day Tracker
