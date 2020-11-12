@@ -137,7 +137,7 @@ fun onChallengeChanged(selectedClg: Challenge) {
 
     // Modify text
     uiTextAreaTweet.value = """
-        Day ${selectedClg.getDay()} of ${selectedClg.title}
+        Day ${selectedClg.getDay()} of ${selectedClg.title} 💪
         
         TYPE_YOUR_PROGRESS_HERE
         
